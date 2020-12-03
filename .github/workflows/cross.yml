@@ -33,12 +33,6 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Cache docker layer
-        uses: satackey/action-docker-layer-caching@v0.0.8
-        with:
-          key: ${{ matrix.target }}-docker-cache-{hash}
-          restore-keys: |
-            ${{ matrix.target }}-docker-cache-
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
